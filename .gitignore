@@ -1,18 +1,8 @@
 ## log files ##
-log.html
-log.log
-output.xml
-report.html
-results/*
-tests/results/pabot_results/*
-tests/results/log.html
-tests/results/report.html
-tests/results/output.xml
-tests/pabot_results/*
-tests/output.xml
-tests/log.html
-tests/report.html
-reports
+**/log.html
+**/log.log
+**/output.xml
+**/report.html
 
 ## etc ##
 *.pyc

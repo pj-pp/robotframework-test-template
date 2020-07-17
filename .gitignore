@@ -1,0 +1,36 @@
+## log files ##
+log.html
+log.log
+output.xml
+report.html
+results/*
+tests/results/pabot_results/*
+tests/results/log.html
+tests/results/report.html
+tests/results/output.xml
+tests/pabot_results/*
+tests/output.xml
+tests/log.html
+tests/report.html
+reports
+
+## etc ##
+*.pyc
+__pycache__/
+selenium-screenshot-*
+*selenium-screenshot-*
+generate/
+.Python
+.vscode/
+.idea/
+config/*/.user.robot
+stderr.txt
+stdout.txt
+.history
+
+## pabot output log
+.pabotsuitenames
+precondition.robot
+
+## DS_Store
+.DS_Store

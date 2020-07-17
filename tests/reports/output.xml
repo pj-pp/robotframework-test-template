@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2 (Python 3.7.7 on darwin)" generated="20200717 12:26:35.786" rpa="false">
+<suite id="s1" name="Test Request Config" source="/Users/nattapol/Documents/Test/github/robotframework-test-template/tests/testsuites/backend/test_request_config.robot">
+<test id="s1-t1" name="Test Request API">
+<kw name="Get Config Successfully">
+<arguments>
+<arg>${config_th}</arg>
+<arg>200</arg>
+</arguments>
+<kw name="Get Requests">
+<arguments>
+<arg>${config_path}</arg>
+<arg>${expected_response}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>backend</arg>
+</arguments>
+<assign>
+<var>${alias}</var>
+</assign>
+<msg timestamp="20200717 12:26:36.059" level="INFO">${alias} = backend</msg>
+<status status="PASS" starttime="20200717 12:26:36.059" endtime="20200717 12:26:36.059"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${BACKEND_URL}</arg>
+</arguments>
+<assign>
+<var>${url}</var>
+</assign>
+<msg timestamp="20200717 12:26:36.060" level="INFO">${url} = https://staging-api.zipmex.net</msg>
+<status status="PASS" starttime="20200717 12:26:36.060" endtime="20200717 12:26:36.060"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${request_uri}</arg>
+</arguments>
+<assign>
+<var>${uri}</var>
+</assign>
+<msg timestamp="20200717 12:26:36.061" level="INFO">${uri} = /config?name=default&amp;product=zipmex&amp;country_code=th</msg>
+<status status="PASS" starttime="20200717 12:26:36.061" endtime="20200717 12:26:36.061"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>content-type=application/json</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20200717 12:26:36.062" level="INFO">${headers} = {'content-type': 'application/json'}</msg>
+<status status="PASS" starttime="20200717 12:26:36.062" endtime="20200717 12:26:36.062"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${alias}</arg>
+<arg>${url}</arg>
+<arg>${headers}</arg>
+<arg>verify=True</arg>
+</arguments>
+<msg timestamp="20200717 12:26:36.063" level="INFO">Creating Session using : alias=backend, url=https://staging-api.zipmex.net, headers={'content-type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20200717 12:26:36.062" endtime="20200717 12:26:36.063"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${alias}</arg>
+<arg>${uri}</arg>
+<arg>params=None</arg>
+<arg>headers=${headers}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20200717 12:26:36.293" level="INFO">GET Request : url=https://staging-api.zipmex.net/config?name=default&amp;product=zipmex&amp;country_code=th 
+ path_url=/config?name=default&amp;product=zipmex&amp;country_code=th 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'content-type': 'application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20200717 12:26:36.294" level="INFO">GET Response : url=https://staging-api.zipmex.net/config?name=default&amp;product=zipmex&amp;country_code=th 
+ status=200, reason=OK 
+ body={"Deposit":{"GenerateNewKey":false,"MinimumVerificationLevel":1,"THB":{"fields":[{"label":"Bank Name","value":"SCB"},{"label":"Account Name","value":"ZIPMEX COMPANY LIMITED"},{"label":"Account Number","value":"1-552-30565-1"}],"maxDeposit":"2,000,000","minDeposit":"30"},"USD":{"fields":[{"label":"Bank Name","value":"Silvergate Bank"},{"label":"SWIFT","value":"SIVGUS66"},{"label":"Account Number","value":"5090021162"},{"label":"Account Name","value":"Zipmex Pte. Ltd."},{"label":"Beneficiary Address","value":"391B Orchard Rd, Level 22, Ngee Ann City Tower B, Singapore 238874"}],"maxDeposit":"20,000"},"hideDepositBankInfo":false},"Footer":{"links":[[{"link":"mailto:support@zipmex.com","openInNewWindow":true,"text":"support@zipmex.com"},{"link":"https://zipmex.com/","text":"https://zipmex.com"}]],"openInNewWindowGlobal":true},"KYC":{"MinimumVerificationLevel":1,"UpfrontKYC":false,"highlightStyle":"star","levels":[{"button":"Increase to Level 1","description":{"benefits":[],"requirements":"Register an account and verify your email address."},"label":"Registered","level":0,"underReviewMessage":"Application under review.","verifiedMessage":"Registered"},{"button":"Proceed to KYC","description":{"benefits":["Crypto Deposits","Crypto Withdrawals","Fiat Deposit","Fiat Withdrawal"],"requirements":"Personal Particulars, Billing address and uploading Identity Documents"},"label":"KYC","level":1,"underReviewMessage":"Application under review.","verifiedMessage":"Verified KYC"}],"requireTHBankAccount":true,"suitabilitySurvey":true,"thaiBankNames":["BANGKOK BANK PUBLIC COMPANY LTD.","KASIKORNBANK PUBLIC COMPANY LTD.","KRUNG THAI BANK PUBLIC COMPANY LTD.","TMB BANK PUBLIC COMPANY LIMITED","SIAM COMMERCIAL BANK PUBLIC COMPANY LTD.","THE SIAM CITY BANK PUBLIC COMPANY LTD.","CITIBANK, N.A.","STANDARD CHARTERED BANK (THAI) PUBLIC COMPANY LIMITED","CIMB THAI BANK PUBLIC COMPANY LIMITED","UNITED OVERSEAS BANK (THAI) PUBLIC COMPANY LIMITED","BANK OF AYUDHYA PUBLIC COMPANY LTD.","THE GOVERNMENT SAVINGS BANK","THE GOVERNMENT HOUSING BANK","BANK FOR AGRICULTURE AND AGRICULTURAL COOPERATIVES","THANACHART BANK PUBLIC COMPANY LTD.","ISLAMIC BANK OF THAILAND","TISCO BANK PUBLIC COMPANY LIMITED","KIATNAKIN BANK PUBLIC COMPANY LIMITED","INDUSTRIAL AND COMMERCIAL BANK OF CHINA (THAI) PUBLIC COMPANY LIMITED"],"verificationRequiredUrl":"/settings/verification"},"LandingPage":{"forceLogIn":true},"Settings":{"apiKeys":false,"demoMode":false,"loyaltyToken":false},"SignupForm":{"privacyPolicyLink":"/privacy.html","termsAndServicesLink":"/terms.html"},"TradingLayout":{"chart":"TradingView","showDepthChart":false},"TradingView":{"disabled_features":["context_menus","control_bar","go_to_date","header_chart_type","header_compare","header_resolutions","header_screenshot","header_symbol_search","header_undo_redo","volume_force_overlay","show_chart_property_page"],"locale":"en","timezone":"Asia/Singapore"},"Withdraw":{"MinimumVerificationLevel":1,"Templates":{"AUD":{"fields":[{"label":"Account Name","validators":["required"]},{"label":"BSB","placeholder":"eg 806043","validators":["required"]},{"label":"Account Number","validators":["required"]}],"maxWithdraw":19000,"minWithdraw":10},"IDR":{"fields":[{"label":"Bank Name","validators":["required"]},{"label":"City","validators":["required"]},{"label":"Account Number","validators":["required"]},{"label":"Account Name","validators":["required"]}],"maxWithdraw":100000000,"minWithdraw":100000},"SGD":{"fields":[{"label":"Account Name","validators":["required"]},{"label":"Address","validators":["required"]},{"label":"Bank Name","validators":["required"]},{"label":"Bank Address","validators":["required"]},{"label":"SWIFT"},{"label":"Account Number","validators":["required"]}],"maxWithdraw":20000,"minWithdraw":10},"USD":{"fields":[{"label":"Account Name","validators":["required"]},{"label":"Address","validators":["required"]},{"label":"Bank Name","validators":["required"]},{"label":"Bank Address","validators":["required"]},{"label":"SWIFT","placeholder":"eg DBSSSGSG","validators":["required"]},{"label":"Account Number","validators":["required"]}],"maxWithdraw":20000,"minWithdraw":30}}},"global":{"allowedProductIds":[11,25,26,27,28,29],"baseCurrency":"THB","configuredLanguages":["en-GB","th"],"defaultLanguage":"th","demoMode":false,"enableSmsOtp":false,"exchangeAdmin":"support@zipmex.com","gateway":"wss://api.exchange.zipmex.com/WSGateway/","instruments":["BTCTHB","ETHTHB","XRPTHB","LTCTHB","BCHTHB"],"languageDropdown":true,"phoneDefaultCountry":"TH","products":["BTC","LTC","ETH","XRP","THB","BCH"],"siteLink":"https://trade.zipmex.co.th/","siteLogo":"site-logo-zipmex.png","siteName":"Zipmex","template":"MILAN","theme":"dark"}} 
+ </msg>
+<msg timestamp="20200717 12:26:36.294" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200717 12:26:36.064" endtime="20200717 12:26:36.294"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()}</arg>
+</arguments>
+<assign>
+<var>${resp_json}</var>
+</assign>
+<msg timestamp="20200717 12:26:36.296" level="INFO">${resp_json} = {'Deposit': {'GenerateNewKey': False, 'MinimumVerificationLevel': 1, 'THB': {'fields': [{'label': 'Bank Name', 'value': 'SCB'}, {'label': 'Account Name', 'value': 'ZIPMEX COMPANY LIMITED'}, {'label': ...</msg>
+<status status="PASS" starttime="20200717 12:26:36.295" endtime="20200717 12:26:36.296"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp_json}</arg>
+</arguments>
+<msg timestamp="20200717 12:26:36.298" level="INFO">{'Deposit': {'GenerateNewKey': False, 'MinimumVerificationLevel': 1, 'THB': {'fields': [{'label': 'Bank Name', 'value': 'SCB'}, {'label': 'Account Name', 'value': 'ZIPMEX COMPANY LIMITED'}, {'label': 'Account Number', 'value': '1-552-30565-1'}], 'maxDeposit': '2,000,000', 'minDeposit': '30'}, 'USD': {'fields': [{'label': 'Bank Name', 'value': 'Silvergate Bank'}, {'label': 'SWIFT', 'value': 'SIVGUS66'}, {'label': 'Account Number', 'value': '5090021162'}, {'label': 'Account Name', 'value': 'Zipmex Pte. Ltd.'}, {'label': 'Beneficiary Address', 'value': '391B Orchard Rd, Level 22, Ngee Ann City Tower B, Singapore 238874'}], 'maxDeposit': '20,000'}, 'hideDepositBankInfo': False}, 'Footer': {'links': [[{'link': 'mailto:support@zipmex.com', 'openInNewWindow': True, 'text': 'support@zipmex.com'}, {'link': 'https://zipmex.com/', 'text': 'https://zipmex.com'}]], 'openInNewWindowGlobal': True}, 'KYC': {'MinimumVerificationLevel': 1, 'UpfrontKYC': False, 'highlightStyle': 'star', 'levels': [{'button': 'Increase to Level 1', 'description': {'benefits': [], 'requirements': 'Register an account and verify your email address.'}, 'label': 'Registered', 'level': 0, 'underReviewMessage': 'Application under review.', 'verifiedMessage': 'Registered'}, {'button': 'Proceed to KYC', 'description': {'benefits': ['Crypto Deposits', 'Crypto Withdrawals', 'Fiat Deposit', 'Fiat Withdrawal'], 'requirements': 'Personal Particulars, Billing address and uploading Identity Documents'}, 'label': 'KYC', 'level': 1, 'underReviewMessage': 'Application under review.', 'verifiedMessage': 'Verified KYC'}], 'requireTHBankAccount': True, 'suitabilitySurvey': True, 'thaiBankNames': ['BANGKOK BANK PUBLIC COMPANY LTD.', 'KASIKORNBANK PUBLIC COMPANY LTD.', 'KRUNG THAI BANK PUBLIC COMPANY LTD.', 'TMB BANK PUBLIC COMPANY LIMITED', 'SIAM COMMERCIAL BANK PUBLIC COMPANY LTD.', 'THE SIAM CITY BANK PUBLIC COMPANY LTD.', 'CITIBANK, N.A.', 'STANDARD CHARTERED BANK (THAI) PUBLIC COMPANY LIMITED', 'CIMB THAI BANK PUBLIC COMPANY LIMITED', 'UNITED OVERSEAS BANK (THAI) PUBLIC COMPANY LIMITED', 'BANK OF AYUDHYA PUBLIC COMPANY LTD.', 'THE GOVERNMENT SAVINGS BANK', 'THE GOVERNMENT HOUSING BANK', 'BANK FOR AGRICULTURE AND AGRICULTURAL COOPERATIVES', 'THANACHART BANK PUBLIC COMPANY LTD.', 'ISLAMIC BANK OF THAILAND', 'TISCO BANK PUBLIC COMPANY LIMITED', 'KIATNAKIN BANK PUBLIC COMPANY LIMITED', 'INDUSTRIAL AND COMMERCIAL BANK OF CHINA (THAI) PUBLIC COMPANY LIMITED'], 'verificationRequiredUrl': '/settings/verification'}, 'LandingPage': {'forceLogIn': True}, 'Settings': {'apiKeys': False, 'demoMode': False, 'loyaltyToken': False}, 'SignupForm': {'privacyPolicyLink': '/privacy.html', 'termsAndServicesLink': '/terms.html'}, 'TradingLayout': {'chart': 'TradingView', 'showDepthChart': False}, 'TradingView': {'disabled_features': ['context_menus', 'control_bar', 'go_to_date', 'header_chart_type', 'header_compare', 'header_resolutions', 'header_screenshot', 'header_symbol_search', 'header_undo_redo', 'volume_force_overlay', 'show_chart_property_page'], 'locale': 'en', 'timezone': 'Asia/Singapore'}, 'Withdraw': {'MinimumVerificationLevel': 1, 'Templates': {'AUD': {'fields': [{'label': 'Account Name', 'validators': ['required']}, {'label': 'BSB', 'placeholder': 'eg 806043', 'validators': ['required']}, {'label': 'Account Number', 'validators': ['required']}], 'maxWithdraw': 19000, 'minWithdraw': 10}, 'IDR': {'fields': [{'label': 'Bank Name', 'validators': ['required']}, {'label': 'City', 'validators': ['required']}, {'label': 'Account Number', 'validators': ['required']}, {'label': 'Account Name', 'validators': ['required']}], 'maxWithdraw': 100000000, 'minWithdraw': 100000}, 'SGD': {'fields': [{'label': 'Account Name', 'validators': ['required']}, {'label': 'Address', 'validators': ['required']}, {'label': 'Bank Name', 'validators': ['required']}, {'label': 'Bank Address', 'validators': ['required']}, {'label': 'SWIFT'}, {'label': 'Account Number', 'validators': ['required']}], 'maxWithdraw': 20000, 'minWithdraw': 10}, 'USD': {'fields': [{'label': 'Account Name', 'validators': ['required']}, {'label': 'Address', 'validators': ['required']}, {'label': 'Bank Name', 'validators': ['required']}, {'label': 'Bank Address', 'validators': ['required']}, {'label': 'SWIFT', 'placeholder': 'eg DBSSSGSG', 'validators': ['required']}, {'label': 'Account Number', 'validators': ['required']}], 'maxWithdraw': 20000, 'minWithdraw': 30}}}, 'global': {'allowedProductIds': [11, 25, 26, 27, 28, 29], 'baseCurrency': 'THB', 'configuredLanguages': ['en-GB', 'th'], 'defaultLanguage': 'th', 'demoMode': False, 'enableSmsOtp': False, 'exchangeAdmin': 'support@zipmex.com', 'gateway': 'wss://api.exchange.zipmex.com/WSGateway/', 'instruments': ['BTCTHB', 'ETHTHB', 'XRPTHB', 'LTCTHB', 'BCHTHB'], 'languageDropdown': True, 'phoneDefaultCountry': 'TH', 'products': ['BTC', 'LTC', 'ETH', 'XRP', 'THB', 'BCH'], 'siteLink': 'https://trade.zipmex.co.th/', 'siteLogo': 'site-logo-zipmex.png', 'siteName': 'Zipmex', 'template': 'MILAN', 'theme': 'dark'}}</msg>
+<status status="PASS" starttime="20200717 12:26:36.297" endtime="20200717 12:26:36.298"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>${expected_response}</arg>
+</arguments>
+<msg timestamp="20200717 12:26:36.299" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200717 12:26:36.298" endtime="20200717 12:26:36.299"></status>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${get_resp_json}</arg>
+<arg>${resp_json}</arg>
+</arguments>
+<msg timestamp="20200717 12:26:36.301" level="INFO">${get_resp_json} = {'Deposit': {'GenerateNewKey': False, 'MinimumVerificationLevel': 1, 'THB': {'fields': [{'label': 'Bank Name', 'value': 'SCB'}, {'label': 'Account Name', 'value': 'ZIPMEX COMPANY LIMITED'}, {'label': ...</msg>
+<status status="PASS" starttime="20200717 12:26:36.300" endtime="20200717 12:26:36.302"></status>
+</kw>
+<status status="PASS" starttime="20200717 12:26:36.058" endtime="20200717 12:26:36.302"></status>
+</kw>
+<status status="PASS" starttime="20200717 12:26:36.057" endtime="20200717 12:26:36.302"></status>
+</kw>
+<status status="PASS" starttime="20200717 12:26:36.056" endtime="20200717 12:26:36.302" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200717 12:26:35.791" endtime="20200717 12:26:36.303"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Test Request Config">Test Request Config</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

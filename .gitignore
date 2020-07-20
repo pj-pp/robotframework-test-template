@@ -14,7 +14,7 @@ generate/
 .Python
 .vscode/
 .idea/
-**/.users.robot
+tests/env/*/.users.robot
 stderr.txt
 stdout.txt
 .history

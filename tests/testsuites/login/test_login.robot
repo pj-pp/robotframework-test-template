@@ -1,7 +1,7 @@
 ***Settings***
-Resource    ../../env/${env}/config.robot
+# Resource    ../../env/${env}/config.robot
 Resource    ../../resources/resource_selenium.robot
-Resource    ../../variables/variable_web_locator.robot
+# Resource    ../../variables/variable_web_locator.robot
 
 Suite Setup       Open Exchange on browser
 Suite Teardown    Close Exchange

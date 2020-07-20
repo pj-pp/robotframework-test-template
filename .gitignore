@@ -3,17 +3,16 @@
 **/log.log
 **/output.xml
 **/report.html
+**/selenium-screenshot-*
 
 ## etc ##
 *.pyc
 __pycache__/
-selenium-screenshot-*
-*selenium-screenshot-*
 generate/
 .Python
 .vscode/
 .idea/
-config/*/.user.robot
+**/.users.robot
 stderr.txt
 stdout.txt
 .history

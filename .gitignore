@@ -5,6 +5,8 @@
 **/report.html
 **/selenium-screenshot-*
 
+*/reports
+
 ## etc ##
 *.pyc
 __pycache__/

@@ -4,9 +4,10 @@
 **/output.xml
 **/report.html
 **/selenium-screenshot-*
-
 */reports
+**/tests/env/*/.users.robot
 
+tests/env/test_web/.users.robot
 ## etc ##
 *.pyc
 __pycache__/
@@ -14,7 +15,6 @@ generate/
 .Python
 .vscode/
 .idea/
-tests/env/*/.users.robot
 stderr.txt
 stdout.txt
 .history
